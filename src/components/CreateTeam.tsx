@@ -28,6 +28,9 @@ const CreateTeam = () => {
     console.log(data)
   }
 
+  /**
+   * TODO: Make teamname unique
+   */
   return (
     <>
       <form onSubmit={handleSubmit(submitNewTeam)}>
