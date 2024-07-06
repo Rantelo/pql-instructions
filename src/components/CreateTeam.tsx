@@ -8,7 +8,7 @@ type FormData = {
   description: string;
 };
 
-const CreateTeam = () => {
+const CreateTeam = ({ players }) => {
 
   const schema: ZodType<FormData> = z.object({
     teamName: z.string({

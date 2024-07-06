@@ -1,12 +1,11 @@
-import React, { useState, useEffect} from 'react'
+import React, { useEffect } from 'react'
 
-const AvailablePlayers = () => {
-  const [data, setData] = useState(null);
+const AvailablePlayers = ({players, setPlayers}) => {
 
   useEffect(() => {
     fetch('http://localhost:3001/api/players/available')
       .then(response => response.json())
-      .then(json => setData(json))
+      .then(json => setPlayers(json))
       .catch(error => console.error(error));
   }, []);
 
@@ -25,8 +24,8 @@ const AvailablePlayers = () => {
   }
 
   const removeFromList = id => {
-    const filteredData = data.filter(element => element.id !== id);
-    setData(filteredData);
+    const filteredPlayers = players.filter(element => element.id !== id);
+    setPlayers(filteredPlayers);
   }
 
   return (
@@ -44,8 +43,8 @@ const AvailablePlayers = () => {
         </thead>
         <tbody>
           {
-            data && 
-            data.map(element => {
+            players && 
+            players.map(element => {
               return (
                 <tr className="bg-white border-b" key={element.id}>
                   <td className="px-6 py-4">{element.name}</td>
