@@ -12,14 +12,15 @@ const AvailablePlayers = () => {
 
   return (
     <>
-      <table>
-        <thead>
+      <div className="border-b border-gray-900/10 pb-12"></div>
+      <table className="w-full text-sm text-left rtl:text-right pt-4">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-100">
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Position</th>
-            <th>Special Ability</th>
-            <th>Remove from creation</th>
+            <th scope="col" className="px-6 py-3">Name</th>
+            <th scope="col" className="px-6 py-3">Age</th>
+            <th scope="col" className="px-6 py-3">Position</th>
+            <th scope="col" className="px-6 py-3">Special Ability</th>
+            <th scope="col" className="px-6 py-3">Remove from creation</th>
           </tr>
         </thead>
         <tbody>
@@ -27,12 +28,12 @@ const AvailablePlayers = () => {
             data && 
             data.map(element => {
               return (
-                <tr key={element.id}>
-                  <td>{element.name}</td>
-                  <td>{element.age}</td>
-                  <td>{element.position}</td>
-                  <td>{element.name}</td>
-                  <td></td>
+                <tr className="bg-white border-b" key={element.id}>
+                  <td className="px-6 py-4">{element.name}</td>
+                  <td className="px-6 py-4">{element.age}</td>
+                  <td className="px-6 py-4">{element.position}</td>
+                  <td className="px-6 py-4">{element.name}</td>
+                  <td className="px-6 py-4"></td>
                 </tr>
               )
             })
