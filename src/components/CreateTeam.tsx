@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { z, ZodType } from 'zod';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
+import pql_logo from '../assets/pql_logo.jpeg';
 
 type Team = {
   name: string;
@@ -10,7 +11,7 @@ type Team = {
 
 const CreateTeam = ({ availablePlayers, setUpdateCreateTeamView }) => {
 
- 
+  // Form Validations
   const schema: ZodType<Team> = z.object({
     name: z.string({
       required_error: 'Team name required'
@@ -23,29 +24,34 @@ const CreateTeam = ({ availablePlayers, setUpdateCreateTeamView }) => {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful},
+    setError,
     reset
   } = useForm<Team>({ resolver: zodResolver(schema), defaultValues: { name: "", slogan: "" }})
-
-  // React.useEffect(() => {
-  //   if (isSubmitSuccessful) {
-  //     console.log('Here i am');
-  //     reset()
-  //   }
-  // }, [reset])
   
-  const submitNewTeam = (team: Team) => {
-    fetch('http://localhost:3001/api/teams', {
+  // POST a new team
+  const submitNewTeam = async (team: Team) => {
+    const response = await fetch('http://localhost:3001/api/teams', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({players: availablePlayers, ...team})
-    })
-    setUpdateCreateTeamView(Math.random());
-    reset();
+    });
+    
+    // Validate team existance
+    if (response.status === 409) {
+      setError("name", {
+        type: "manual",
+        message: "Team name already taken",
+      })
+    } else {
+      // Refresh view
+      setUpdateCreateTeamView(Math.random());
+      reset();
+    }
   }
 
-
+  // Submit button is enabled depending on available players
   let submit = availablePlayers
     ? <input
       type="submit"
@@ -58,9 +64,7 @@ const CreateTeam = ({ availablePlayers, setUpdateCreateTeamView }) => {
       style={{cursor: 'not-allowed'}}
     > Create team
     </button>
-  /**
-   * TODO: Make teamname unique
-   */
+
   return (
     <>
       <form onSubmit={handleSubmit(submitNewTeam)}>
@@ -108,6 +112,7 @@ const CreateTeam = ({ availablePlayers, setUpdateCreateTeamView }) => {
           <div className='p-4'></div>
         </div>
     </form >
+    <img src={pql_logo} className='logo'/>
     </>
   )
 }

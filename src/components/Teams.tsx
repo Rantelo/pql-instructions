@@ -3,8 +3,10 @@ import PlayersTable from './PlayersTable.tsx';
 
 const Teams = ({teams, setTeams}) => {
 
+  // Local state to refresh view
   const [updateView, setUpdateView] = useState(0);
 
+  // Fetch teams
   useEffect(() => {
     fetch('http://localhost:3001/api/teams')
       .then(response => response.json())
@@ -12,6 +14,7 @@ const Teams = ({teams, setTeams}) => {
       .catch(error => console.error(error));
   }, [updateView]);
 
+  // Expel player from team
   const removeItem = (id) => {
     fetch('http://localhost:3001/api/removeFromTeam', {
       method: 'PUT',
@@ -22,6 +25,7 @@ const Teams = ({teams, setTeams}) => {
     })
     .then(response => response.json())
 
+    // Force view refresh after expelling player
     setUpdateView(Math.random());
   };
 
@@ -44,4 +48,4 @@ const Teams = ({teams, setTeams}) => {
   )
 }
 
-export default Teams
+export default Teams;

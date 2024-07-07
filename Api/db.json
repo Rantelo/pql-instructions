@@ -7,8 +7,8 @@
     },
     {
       "id": 2,
-      "name": "Gryffindor",
-      "slogan": "aaaaaaa"
+      "name": "Los buenos muchachos",
+      "slogan": "Nadie nos puede ganar"
     }
   ],
   "players": [
@@ -38,14 +38,14 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 5,
       "name": "Cedric Diggory",
       "age": 17,
       "position": "Seeker",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 6,
@@ -73,7 +73,7 @@
       "name": "Neville Longbottom",
       "age": 11,
       "position": "Keeper",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 10,

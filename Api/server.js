@@ -89,6 +89,11 @@ server.post('/api/teams', (req, res) => {
     return res.status(400).jsonp({ message: 'Name is required' });
   }
 
+  const teams = router.db.get('teams').value();
+  if (teams.filter(team => team.name === body.name).length > 0) {
+    return res.status(409).jsonp({ message: 'Name already taken'})
+  }
+
   // Snapshot for rollback
   // players
   const originalPlayers = players.map(id => {
@@ -96,7 +101,7 @@ server.post('/api/teams', (req, res) => {
     return { ...player };
   });
   // team
-  let teamId = router.db.get('teams').value().length + 1;
+  let teamId = teams.length + 1;
 
   try {
     console.log("Creating team...");

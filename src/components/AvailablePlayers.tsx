@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react';
 import PlayersTable from './PlayersTable.tsx';
 
-type Player = {
-  id: Number;
-  name: string;
-  age: Number;
-  position: string;
-}
-
 const AvailablePlayers = ({availablePlayers, setAvailablePlayers, updateCreateTeamView}) => {
 
+  // Fetch Available players
   useEffect(() => {
     fetch('http://localhost:3001/api/players/available')
       .then(response => response.json())
@@ -17,12 +11,13 @@ const AvailablePlayers = ({availablePlayers, setAvailablePlayers, updateCreateTe
       .catch(error => console.error(error));
   }, [updateCreateTeamView]);
 
-
+  // Remove player from availables list
   const removeFromList = id => {
     const filteredPlayers = availablePlayers.filter(element => element.id !== id);
     setAvailablePlayers(filteredPlayers);
   }
 
+  // Info message when no available players
   let noPlayers = (availablePlayers && availablePlayers.length > 0) 
     ? undefined
     : <div className="p-4 mt-10 text-sm text-slate-500 rounded-lg bg-slate-200 " role="alert">
@@ -38,5 +33,4 @@ const AvailablePlayers = ({availablePlayers, setAvailablePlayers, updateCreateTe
   )
 }
 
-
-export default AvailablePlayers
+export default AvailablePlayers;

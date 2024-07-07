@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const SPECIAL_ABILITY = {
   Chaser: "Light Speed",
@@ -14,8 +14,8 @@ const PlayersTable = ({players, remove, removeLabel}) => {
   }
 
   return (
+    // Reusable players table
     <div>
-    <>
       <table className="w-full text-sm text-left rtl:text-right pt-4">
         <thead className="text-xs text-gray-700 uppercase bg-gray-100">
           <tr>
@@ -43,11 +43,12 @@ const PlayersTable = ({players, remove, removeLabel}) => {
           }
         </tbody>
       </table>
-    </>
 </div>
   )
 }
 
+// This button is also be used to expel a player from the team outline
+// The trick is recieving the removal method
 const RemoveButton = ({removeItem}) => {
   return (
     <button

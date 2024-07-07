@@ -10,7 +10,7 @@ import Teams from './components/Teams.tsx';
 function App() {
 
   const [availablePlayers, setAvailablePlayers] = useState();
-  const [page, setPage] = useState("Teams");
+  const [page, setPage] = useState("Create Team");
   const [teams, setTeams] = useState();
   const [updateCreateTeamView, setUpdateCreateTeamView] = useState(0);
 
