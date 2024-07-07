@@ -3,16 +3,24 @@ import { z, ZodType } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod'
 
-type FormData = {
+type Team = {
   name: string;
   slogan: string;
 };
 
-const CreateTeam = ({ players }) => {
+const CreateTeam = ({ availablePlayers }) => {
 
-  
+  const submitNewTeam = (team: Team) => {
+    fetch('http://localhost:3001/api/teams', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({players: availablePlayers, ...team})
+    })
+  }
 
-  const schema: ZodType<FormData> = z.object({
+  const schema: ZodType<Team> = z.object({
     name: z.string({
       required_error: 'Team name required'
     })
@@ -24,20 +32,9 @@ const CreateTeam = ({ players }) => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<FormData>({ resolver: zodResolver(schema) })
+  } = useForm<Team>({ resolver: zodResolver(schema) })
 
-  const submitNewTeam = (team: FormData) => {
-    fetch('http://localhost:3001/api/teams', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({players, ...team})
-    })
-    console.log(team);
-  }
-
-  let submit = players
+  let submit = availablePlayers
     ? <input
       type="submit"
       value="Create team"
@@ -56,7 +53,6 @@ const CreateTeam = ({ players }) => {
     <>
       <form onSubmit={handleSubmit(submitNewTeam)}>
         <div className="space-y-8">
-          <div className="border-b border-gray-900/10 pb-12"></div>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-4">

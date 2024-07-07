@@ -23,10 +23,46 @@ server.get('/api/players/available/', (req, res) => {
 server.get('/api/teams/', (req, res) => {
   // Get team info
   let teams = router.db.get('teams').value();
+  // Get all players
+  let players = router.db.get('players').value();
 
-  res.jsonp(teams);
+  // Form teams structure
+  let response = teams.map(({id, name, slogan}) => (
+    {
+      id,
+      name,
+      slogan,
+      players: players.filter(player => player.team_id === id)
+    }
+  ))
+
+  res.jsonp(response);
+
 });
 
+server.put('api/removeFromTeam/:id', (req, res) => {
+  const { id } = req.body;
+  console.log(req, res)
+
+  if (!id) {
+    return res.status(400).jsonp({ message: 'Id is required'})
+  }
+  console.log(id);
+
+  try {
+    // Remove player from team
+    router.db.get('players').find({ id }).assign({ team_id: null }).write();
+
+    //if last player in team remove team
+    //  router.db.get('teams').remove({ id: teamId }).write();
+
+    res.status(201).jsonp({ message: 'Player expelled' });
+  } catch (error) {
+    console.log("Error removing player from team");
+    res.status(500).jsonp({ message: error.message });
+  }
+
+})
 
 /**
  * Customize POST /api/teams so after creating a team, the team_id is added to the players
