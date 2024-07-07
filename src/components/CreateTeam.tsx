@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { z, ZodType } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import pql_logo from '../assets/pql_logo.jpeg';
 
 type Team = {
   name: string;
   slogan: string;
 };
+
+const pql_logo =  require("../assets/pql_logo.jpeg");
 
 const CreateTeam = ({ availablePlayers, setUpdateCreateTeamView }) => {
 

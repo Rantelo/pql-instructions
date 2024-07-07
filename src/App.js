@@ -5,8 +5,6 @@ import AvailablePlayers from './components/AvailablePlayers.tsx';
 import Nav from './components/Nav.tsx';
 import Teams from './components/Teams.tsx';
 
-
-
 function App() {
 
   const [availablePlayers, setAvailablePlayers] = useState();
