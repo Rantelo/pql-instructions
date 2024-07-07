@@ -42,19 +42,23 @@ server.get('/api/teams/', (req, res) => {
 
 server.put('/api/removeFromTeam/', (req, res) => {
   const { id } = req.body;
-  console.log(req, res)
 
   if (!id) {
     return res.status(400).jsonp({ message: 'Id is required'})
   }
-  console.log(id);
 
   try {
+    // Get team id
+    const {team_id} = router.db.get('players').find({ id }).value();
+
     // Remove player from team
     router.db.get('players').find({ id }).assign({ team_id: null }).write();
 
     //if last player in team remove team
-    //  router.db.get('teams').remove({ id: teamId }).write();
+    const players = router.db.get('players').value();
+    if (players.filter(player => player.team_id === team_id).length <= 0) {
+      router.db.get('teams').remove({ id: team_id }).write();
+    }
 
     res.status(201).jsonp({ message: 'Player expelled' });
   } catch (error) {

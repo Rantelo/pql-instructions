@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { z, ZodType } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -8,18 +8,9 @@ type Team = {
   slogan: string;
 };
 
-const CreateTeam = ({ availablePlayers }) => {
+const CreateTeam = ({ availablePlayers, setUpdateCreateTeamView }) => {
 
-  const submitNewTeam = (team: Team) => {
-    fetch('http://localhost:3001/api/teams', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({players: availablePlayers, ...team})
-    })
-  }
-
+ 
   const schema: ZodType<Team> = z.object({
     name: z.string({
       required_error: 'Team name required'
@@ -31,8 +22,29 @@ const CreateTeam = ({ availablePlayers }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm<Team>({ resolver: zodResolver(schema) })
+    formState: { errors, isSubmitSuccessful},
+    reset
+  } = useForm<Team>({ resolver: zodResolver(schema), defaultValues: { name: "", slogan: "" }})
+
+  // React.useEffect(() => {
+  //   if (isSubmitSuccessful) {
+  //     console.log('Here i am');
+  //     reset()
+  //   }
+  // }, [reset])
+  
+  const submitNewTeam = (team: Team) => {
+    fetch('http://localhost:3001/api/teams', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({players: availablePlayers, ...team})
+    })
+    setUpdateCreateTeamView(Math.random());
+    reset();
+  }
+
 
   let submit = availablePlayers
     ? <input
@@ -93,6 +105,7 @@ const CreateTeam = ({ availablePlayers }) => {
 
           { submit }
 
+          <div className='p-4'></div>
         </div>
     </form >
     </>

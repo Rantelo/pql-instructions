@@ -7,18 +7,8 @@
     },
     {
       "id": 2,
-      "name": "Los buenos muchachos",
-      "slogan": ""
-    },
-    {
-      "id": 3,
-      "name": "Griffindor",
-      "slogan": ""
-    },
-    {
-      "id": 4,
-      "name": "Griffindor",
-      "slogan": ""
+      "name": "Gryffindor",
+      "slogan": "aaaaaaa"
     }
   ],
   "players": [
@@ -258,14 +248,14 @@
       "name": "Whitby",
       "age": 17,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": null
     },
     {
       "id": 35,
       "name": "Kirke",
       "age": 17,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": null
     },
     {
       "id": 36,

@@ -12,6 +12,7 @@ function App() {
   const [availablePlayers, setAvailablePlayers] = useState();
   const [page, setPage] = useState("Teams");
   const [teams, setTeams] = useState();
+  const [updateCreateTeamView, setUpdateCreateTeamView] = useState(0);
 
   return (
     <div className="App">
@@ -19,8 +20,15 @@ function App() {
       {
         page === "Create Team" &&
         <>
-          <CreateTeam availablePlayers={availablePlayers} />
-          <AvailablePlayers availablePlayers={availablePlayers} setAvailablePlayers={setAvailablePlayers} />
+          <CreateTeam
+            availablePlayers={availablePlayers}
+            setUpdateCreateTeamView={setUpdateCreateTeamView}
+          />
+          <AvailablePlayers
+            availablePlayers={availablePlayers}
+            setAvailablePlayers={setAvailablePlayers}
+            updateCreateTeamView={updateCreateTeamView}
+          />
         </>
       }
       {

@@ -8,14 +8,14 @@ type Player = {
   position: string;
 }
 
-const AvailablePlayers = ({availablePlayers, setAvailablePlayers}) => {
+const AvailablePlayers = ({availablePlayers, setAvailablePlayers, updateCreateTeamView}) => {
 
   useEffect(() => {
     fetch('http://localhost:3001/api/players/available')
       .then(response => response.json())
       .then(json => setAvailablePlayers(json))
       .catch(error => console.error(error));
-  }, []);
+  }, [updateCreateTeamView]);
 
 
   const removeFromList = id => {
