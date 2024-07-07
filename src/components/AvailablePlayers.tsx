@@ -1,5 +1,19 @@
 import React, { useEffect } from 'react'
 
+type Player = {
+  id: Number;
+  name: string;
+  age: Number;
+  position: string;
+}
+
+const SPECIAL_ABILITY = {
+  Chaser: "Light Speed",
+  Seeker: "Enhanced Vision",
+  Beater: "Power Swing",
+  Keeper: "Bold Reflexes"
+};
+
 const AvailablePlayers = ({players, setPlayers}) => {
 
   useEffect(() => {
@@ -10,23 +24,19 @@ const AvailablePlayers = ({players, setPlayers}) => {
   }, []);
 
   const specialAbility = position => {
-    switch (position) {
-      case "Chaser":
-        return "Light Speed"
-      case "Seeker":
-        return "Enhanced Vision"
-      case "Beater":
-        return "Power Swing"
-      case "Keeper":
-      default:
-        return "Bold Reflexes"
-    }
+    return (SPECIAL_ABILITY[position]) ? SPECIAL_ABILITY[position] : "--";
   }
 
   const removeFromList = id => {
     const filteredPlayers = players.filter(element => element.id !== id);
     setPlayers(filteredPlayers);
   }
+
+  let noPlayers = (players && players.length > 0) 
+    ? undefined
+    : <div className="p-4 mt-10 text-sm text-slate-500 rounded-lg bg-slate-200 " role="alert">
+      <span className="font-medium">You can't create a new team since there are no players available.</span>
+    </div>;
 
   return (
     <>
@@ -43,21 +53,22 @@ const AvailablePlayers = ({players, setPlayers}) => {
         </thead>
         <tbody>
           {
-            players && 
-            players.map(element => {
-              return (
-                <tr className="bg-white border-b" key={element.id}>
-                  <td className="px-6 py-4">{element.name}</td>
-                  <td className="px-6 py-4">{element.age}</td>
-                  <td className="px-6 py-4">{element.position}</td>
-                  <td className="px-6 py-4">{specialAbility(element.position)}</td>
-                  <td className="px-6 py-4">{<RemoveButton removeItem={() => removeFromList(element.id)} />}</td>
-                </tr>
-              )
-            })
+            players &&
+              players.map(element => {
+                return (
+                  <tr className="bg-white border-b" key={element.id}>
+                    <td className="px-6 py-4">{element.name}</td>
+                    <td className="px-6 py-4">{element.age}</td>
+                    <td className="px-6 py-4">{element.position}</td>
+                    <td className="px-6 py-4">{specialAbility(element.position)}</td>
+                    <td className="px-6 py-4">{<RemoveButton removeItem={() => removeFromList(element.id)} />}</td>
+                  </tr>
+                )
+              })
           }
         </tbody>
       </table>
+      { noPlayers }
     </>
   )
 }
