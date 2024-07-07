@@ -40,7 +40,7 @@ server.get('/api/teams/', (req, res) => {
 
 });
 
-server.put('api/removeFromTeam/:id', (req, res) => {
+server.put('/api/removeFromTeam/', (req, res) => {
   const { id } = req.body;
   console.log(req, res)
 

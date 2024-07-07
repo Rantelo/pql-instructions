@@ -48,14 +48,14 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": 3
+      "team_id": null
     },
     {
       "id": 5,
       "name": "Cedric Diggory",
       "age": 17,
       "position": "Seeker",
-      "team_id": 4
+      "team_id": null
     },
     {
       "id": 6,
