@@ -1,5 +1,25 @@
 ## Project
 
+This project was built using `create-react-app`, `react-hook-form`, `zod`, and `tailwind`.
+
+### Run instructions
+
+1. Install Dependencies
+    ```
+    npm install
+    ```
+
+2. Run Backend Service on port 3001
+    ```
+    cd Api && npm install && npm start
+    ```
+
+3. Run Frontend
+    ```
+    npm start
+    ```
+
+
 ### Build the Lineup for the Premier Quidditch League (PQL)
 
 <img src="./public/images/pql_logo.jpeg" alt="Premier Quidditch League Logo" width="200" />
