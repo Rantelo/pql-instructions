@@ -4,6 +4,21 @@
       "id": 1,
       "name": "Gryffindor",
       "slogan": "Where dwell the brave at heart"
+    },
+    {
+      "id": 2,
+      "name": "asdf",
+      "slogan": ""
+    },
+    {
+      "id": 3,
+      "name": "Los Malos",
+      "slogan": "Son los mas malos de la ciudad"
+    },
+    {
+      "id": 4,
+      "name": "Los ultimos",
+      "slogan": "Nadie los elige"
     }
   ],
   "players": [
@@ -33,231 +48,231 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 5,
       "name": "Cedric Diggory",
       "age": 17,
       "position": "Seeker",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 6,
       "name": "Cho Chang",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 7,
       "name": "Luna Lovegood",
       "age": 14,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 8,
       "name": "Ginny Weasley",
       "age": 14,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 9,
       "name": "Neville Longbottom",
       "age": 11,
       "position": "Keeper",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 10,
       "name": "Fred Weasley",
       "age": 13,
       "position": "Beater",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 11,
       "name": "George Weasley",
       "age": 13,
       "position": "Beater",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 12,
       "name": "Oliver Wood",
       "age": 17,
       "position": "Keeper",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 13,
       "name": "Angelina Johnson",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 14,
       "name": "Katie Bell",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 15,
       "name": "Alicia Spinnet",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 16,
       "name": "Marcus Flint",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 17,
       "name": "Adrian Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 18,
       "name": "Terence Higgs",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 19,
       "name": "Montague",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 20,
       "name": "Harper",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 21,
       "name": "Urquhart",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 22,
       "name": "Vaisey",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 23,
       "name": "Derrick",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 24,
       "name": "Bletchley",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 25,
       "name": "Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 26,
       "name": "Warrington",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 27,
       "name": "Whitby",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 28,
       "name": "Kirke",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 29,
       "name": "Bell",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 30,
       "name": "Malcolm",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 31,
       "name": "Bletchley",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 32,
       "name": "Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 33,
       "name": "Warrington",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 34,
       "name": "Whitby",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 35,
       "name": "Kirke",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 36,
       "name": "Bell",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     }
   ]
 }

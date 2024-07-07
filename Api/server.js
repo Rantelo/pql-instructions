@@ -19,6 +19,14 @@ server.get('/api/players/available/', (req, res) => {
   res.jsonp(availablePlayers);
 });
 
+// Return all players that are still available to be drafted by a team
+server.get('/api/teams/', (req, res) => {
+  // Get team info
+  let teams = router.db.get('teams').value();
+
+  res.jsonp(teams);
+});
+
 
 /**
  * Customize POST /api/teams so after creating a team, the team_id is added to the players
@@ -58,7 +66,8 @@ server.post('/api/teams', (req, res) => {
 
     console.log("Updating players...");
     if(!players || players.length === 0) throw new Error('Players are required');
-    players.forEach(id => {
+    players.forEach(({ id }) => {
+      console.log(id)
       // Get player
       const player = router.db.get('players').find({ id }).value();
       if(!player) throw new Error(`Player with id ${id} not found`);
